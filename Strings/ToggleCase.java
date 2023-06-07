@@ -1,37 +1,34 @@
-//DhrUv MalIk ---> dHRuV mALiK
+
+// Problem Statement
+// You are given provided with a string S and you have to reverse case i.e. all lower-cased characters
+// should be upper-cased and all upper-cased character should be lower-cased.
+// Input Format
+// The first line of the input contains a string S.
+// Output format
+// Print a string after reversing the case.
 import java.util.*;
+
 public class ToggleCase {
     public static void main(String[] args) {
-        try (Scanner sc = new Scanner(System.in)) {
-            StringBuilder str = new StringBuilder(sc.nextLine());
-            for (int i = 0; i < str.length(); i++)
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String[] strarr = str.split(" ");
+        for (int i = 0; i < strarr.length; i++) {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < strarr[i].length(); j++)
             {
-                boolean flag = true;
-                char c = str.charAt(i);
-                int ascii = (int)c;
-                if(c==' ')
-                {
-                    continue;
+                char c = strarr[i].charAt(j);
+                if (Character.isUpperCase(c)) {
+                    sb.append(Character.toLowerCase(c));
                 }
-                if(ascii>=97)
-                {
-                    flag=false;
+                else{
+                    sb.append(Character.toUpperCase(c));
                 }
-                if(flag==false)
-                {
-                    ascii-=32;
-                    char x = (char)ascii;
-                    str.setCharAt(i,x);
-                }
-                else
-                {
-                    ascii+=32;
-                    char x = (char)ascii;
-                    str.setCharAt(i,x);
-                }
-
             }
-            System.out.println(str);
+            strarr[i]=sb.toString();
         }
+        String ans = String.join(" ",strarr);
+        System.out.println(ans);
+
     }
 }
