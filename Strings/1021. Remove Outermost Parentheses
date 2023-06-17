@@ -1,0 +1,37 @@
+class Solution {
+    public String removeOuterParentheses(String s) {
+        StringBuilder ans =new StringBuilder();
+        char[] charr = s.toCharArray();
+        int count=0;
+        for(int i=0;i<charr.length;i++)
+        {
+          if(charr[i]=='(')
+          {
+              if(count>0)
+              {
+                  ans.append(charr[i]);
+              }
+              count++;
+          }
+          else if(charr[i]==')')
+          {
+            count--;
+            if(count>0)
+            {
+                ans.append(charr[i]);
+            }
+          }
+        }
+        return ans.toString();
+    }
+}
+
+
+
+/*
+Input: s = "(()())(())(()(()))"
+Output: "()()()()(())"
+Explanation: 
+The input string is "(()())(())(()(()))", with primitive decomposition "(()())" + "(())" + "(()(()))".
+After removing outer parentheses of each part, this is "()()" + "()" + "()(())" = "()()()()(())".
+*/
