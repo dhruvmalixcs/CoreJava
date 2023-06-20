@@ -1,0 +1,45 @@
+// tc: O(NogN);
+class Solution {
+    public char findTheDifference(String s, String t) {
+        char[] c1= s.toCharArray();
+        char[] c2= t.toCharArray();
+        Arrays.sort(c1);
+        Arrays.sort(c2);
+        for(int i=0;i<s.length();i++)
+        {
+            if(c1[i]!=c2[i]){
+                return c2[i];
+            }
+        }
+        return c2[t.length()-1];
+
+    }
+}
+//another approach with time complexity O(N);
+class Solution {
+    public char findTheDifference(String s, String t) {
+        int[] count = new int[26];
+        
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+        }
+        
+        for (int i = 0; i < t.length(); i++) {
+            count[t.charAt(i) - 'a']--;
+            if (count[t.charAt(i) - 'a'] < 0) {
+                return t.charAt(i);
+            }
+        }
+        
+        return ' '; // Return a default value if no difference is found
+    }
+}
+Input: s = "abcd", t = "abcde"
+Output: "e"
+Explanation: 'e' is the letter that was added.
+
+
+
+
+
+
