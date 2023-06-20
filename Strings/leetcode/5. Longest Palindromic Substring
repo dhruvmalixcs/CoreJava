@@ -1,0 +1,32 @@
+// solution is working but not accepted on leetcode due to time complexity of O(N3);
+
+class Solution {
+    public String longestPalindrome(String s){
+        char[] charr = s.toCharArray();
+        String[] strarr; 
+        ArrayList<String> arlist = new ArrayList<>();
+        for(int i=0;i<charr.length;i++)
+        {
+            for(int j=i+1;j<=charr.length;j++)
+            {
+                String subs=s.substring(i,j);
+                StringBuilder stemp = new StringBuilder(subs).reverse();
+                if(subs.equals(stemp.toString()))
+                {
+                    arlist.add(subs);
+                }
+                
+            }
+        }
+        String longestString = Collections.max(arlist, Comparator.comparing(String::length));
+        return longestString;
+    }
+}
+
+/*
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+*/
+
+
