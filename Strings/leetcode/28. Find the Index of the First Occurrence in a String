@@ -1,0 +1,31 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int ans=0;
+        Boolean flag=false;
+        for(int i=0;i<=haystack.length()-needle.length();i++)
+        {
+            
+                String str = haystack.substring(i,i+needle.length());
+                if(str.equals(needle))
+                {
+                    flag=true;
+                    ans=i;
+                    break;
+                    
+                }
+        }
+        if(flag==false){
+            return -1;
+        }
+        else{
+        return ans;
+        }
+    }
+}
+
+/*
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+*/
